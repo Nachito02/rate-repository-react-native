@@ -1,20 +1,18 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { Repository } from "../interfaces/repository";
-import StyledText from "./StyledText";
+import theme from "../theme";
+import RepositoryStats from "./RepositoryStats";
+import RepositoryItemHeader from "./RepositoryItemHeader";
 interface RepositoryItemProps {
   item: Repository;
 }
 
 const RepositoryItem: React.FC<RepositoryItemProps> = ({ item }) => {
   return (
-     <View key={item.id} style={styles.container}>
-      <StyledText fontWeight="bold" fontSize="subheading">FullName: {item.description}</StyledText>
-      <StyledText >{item.language}</StyledText>
-      <StyledText >{item.stargazersCount}</StyledText>
-      <StyledText >{item.forksCount}</StyledText>
-      <StyledText >{item.reviewCount}</StyledText>
-      <StyledText >{item.ratingAverage}</StyledText>
+    <View key={item.id} style={styles.container}>
+      <RepositoryItemHeader item={item} />
+      <RepositoryStats item={item} />
     </View>
   );
 };
@@ -26,10 +24,20 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
 
-  strong: {
-    fontWeight: "bold",
-    color: "#89f",
-    marginBottom: 5,
+  language: {
+    padding: 4,
+    color: theme.colors.white,
+    backgroundColor: theme.colors.primary,
+    alignSelf: "flex-start",
+    marginVertical: 4,
+    borderRadius: 4,
+    overflow: "hidden",
+  },
+
+  image: {
+    width: 48,
+    height: 48,
+    borderRadius: 4,
   },
 });
 

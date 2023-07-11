@@ -29,6 +29,10 @@ const styles = StyleSheet.create({
   small: {
     fontSize: 10,
   },
+
+  textAlignCenter:{
+    textAlign: 'center'
+  }
 });
 
 interface StyledTextProps {
@@ -37,6 +41,7 @@ interface StyledTextProps {
   fontWeight?: string;
   style?: StyleProp<TextStyle>;
   children?: ReactNode;
+  align? : string;
 }
 
 const StyledText: React.FC<StyledTextProps> = ({
@@ -45,6 +50,7 @@ const StyledText: React.FC<StyledTextProps> = ({
   fontSize,
   fontWeight,
   style,
+  align,
   ...restOfProps
 }) => {
   const textStyles = [
@@ -53,7 +59,8 @@ const StyledText: React.FC<StyledTextProps> = ({
     color === "secondary" && styles.colorSecondary,
     fontSize === "subheading" && styles.subheading,
     fontWeight === "bold" && styles.bold,
-
+    align === 'center' && styles.textAlignCenter,
+    style
   ];
 
   return (
