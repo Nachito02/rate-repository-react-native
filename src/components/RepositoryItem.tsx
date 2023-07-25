@@ -1,5 +1,6 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import {Platform, View, StyleSheet, Image } from "react-native";
+
 import { Repository } from "../interfaces/repository";
 import theme from "../theme";
 import RepositoryStats from "./RepositoryStats";
@@ -27,7 +28,11 @@ const styles = StyleSheet.create({
   language: {
     padding: 4,
     color: theme.colors.white,
-    backgroundColor: theme.colors.primary,
+    backgroundColor: Platform.select({
+      android: theme.colors.primary,
+      ios: 'orange',
+      default : 'purple'
+    }),
     alignSelf: "flex-start",
     marginVertical: 4,
     borderRadius: 4,

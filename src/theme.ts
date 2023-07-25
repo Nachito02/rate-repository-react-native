@@ -1,13 +1,15 @@
-  const theme = {
-    appBar:{
-      primary: '#24292e',
-      textPrimary:'#fff'
-    },
+import { Platform } from "react-native";
+const theme = {
+  appBar: {
+    primary: "#24292e",
+    textSecondary: "#999",
+    textPrimary: "#fff",
+  },
   colors: {
     textPrimary: "#24292e",
     textSecondary: "#586069",
     primary: "#0366d6",
-    white: '#fafafa'
+    white: "#fafafa",
   },
 
   fontSizes: {
@@ -16,12 +18,16 @@
   },
 
   fonts: {
-    main: "System",
+    main : Platform.select({
+      ios: 'Arial',
+      android : 'Roboto',
+      default : 'System'
+    })
   },
   fontWeights: {
-    normal: '400' as 'normal',
-    bold: "700" as 'bold'
-  }
+    normal: "400" as "normal",
+    bold: "700" as "bold",
+  },
 };
 
-export default theme
+export default theme;
